@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:wallpaper_toy_project/models/ListCollectionsResponse.dart';
 import '../models/Collections.dart';
 import 'CollectionItem.dart';
 
@@ -8,13 +7,12 @@ class CollectionsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Collections _collectionProvider = Provider.of<Collections>(context);
-    List<CollectionResponse> collections = _collectionProvider.collections;
 
     return GridView.builder(
-      itemCount: collections.length,
+      itemCount:  _collectionProvider.results == null ? 0 : _collectionProvider.results.length,
       itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
         // builder: (c) => products[i],
-        value: collections[i],
+        value: _collectionProvider.results == null ? null : _collectionProvider.results[i],
         child: CollectionItem(),
       ),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
