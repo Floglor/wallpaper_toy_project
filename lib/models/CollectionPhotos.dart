@@ -1,4 +1,6 @@
-class GetCollectionsPhotosResponse {
+import 'package:flutter/cupertino.dart';
+
+class CollectionPhoto with ChangeNotifier{
   String id;
   String createdAt;
   String updatedAt;
@@ -13,7 +15,7 @@ class GetCollectionsPhotosResponse {
   Urls urls;
   CollectionLinks links;
 
-  GetCollectionsPhotosResponse(
+  CollectionPhoto(
       {this.id,
       this.createdAt,
       this.updatedAt,
@@ -28,7 +30,11 @@ class GetCollectionsPhotosResponse {
       this.urls,
       this.links});
 
-  GetCollectionsPhotosResponse.fromJson(Map<String, dynamic> json) {
+
+
+
+
+  CollectionPhoto.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];

@@ -6,6 +6,7 @@ import 'dart:convert' as convert;
 
 import 'package:wallpaper_toy_project/models/UnsplashResponse.dart';
 import 'package:wallpaper_toy_project/widgets/CollectionGrid.dart';
+import 'package:wallpaper_toy_project/widgets/CollectionImagesGrid.dart';
 
 void main() => runApp(MyApp());
 
@@ -154,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   void _collectionTabGetURLs(String query) async {
     if (_collectionTabPageNumber < _collectionTabPageLimit + 1) {
       if (_collectionTabPageNumber == _collectionTabPageLimit) {
-        _directTabIsReachedMxaimunCtapacipy = true;
+        _collectionsIsReachedMxaimunCtapacipy = true;
       }
       //_isLoading = true;
       var _tempURL = _url;
@@ -182,9 +183,13 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     return MultiProvider(
         providers: [ChangeNotifierProvider.value(value: collections)],
         child: MaterialApp(
+          routes: {
+            CollectionImagesGrid.routeName: (ctx) => CollectionImagesGrid(),
+          },
             home: DefaultTabController(
                 length: 2,
                 child: Scaffold(
+
                     appBar: AppBar(
                       title: _appBarTitle,
                       leading: IconButton(
